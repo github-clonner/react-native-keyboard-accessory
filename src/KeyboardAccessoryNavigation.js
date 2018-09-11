@@ -42,6 +42,7 @@ class KeyboardAccessoryNavigation extends Component {
       infoMessageStyle,
       nextButtonDirection,
       previousButtonDirection,
+      ref,
       ...passThroughProps
     } = this.props;
 
@@ -58,7 +59,9 @@ class KeyboardAccessoryNavigation extends Component {
     ];
 
     return (
-      <KeyboardAccessoryView { ...passThroughProps }>
+      <KeyboardAccessoryView ref={(r)=>{
+        this.accessoryView = r;
+      }} { ...passThroughProps }>
         <View style={accessoryContainerStyle}>
           { !arrowsHidden && (
             <View style={styles.leftContainer}>
@@ -139,6 +142,7 @@ KeyboardAccessoryNavigation.propTypes = {
   infoMessageStyle: Text.propTypes.style,
   nextButtonDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
   previousButtonDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
+  ref:PropTypes.object,
 }
 
 KeyboardAccessoryNavigation.defaultProps = {

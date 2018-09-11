@@ -114,6 +114,14 @@ class KeyboardAccessoryView extends Component {
     })
   }
 
+  hide = ()=>{
+    this.setState({
+      isKeyboardVisible: false,
+      keyboardHeight: 0,
+      accessoryHeight: this.props.alwaysVisible ? this.state.visibleAccessoryHeight : 0,
+    })
+  }
+
   handleKeyboardHide = (keyboardEvent) => {
     const { animateOn, animationConfig } = this.props;
 
@@ -123,11 +131,7 @@ class KeyboardAccessoryView extends Component {
       );
     }
 
-    this.setState({
-      isKeyboardVisible: false,
-      keyboardHeight: 0,
-      accessoryHeight: this.props.alwaysVisible ? this.state.visibleAccessoryHeight : 0,
-    })
+    this.hide();
   }
 
   render() {
@@ -147,10 +151,11 @@ class KeyboardAccessoryView extends Component {
       style,
       inSafeAreaView,
       safeAreaBumper,
+      ref,
     } = this.props;
 
     return (
-      <View style={{ height: (isKeyboardVisible || alwaysVisible ? accessoryHeight : 0) }}>
+      <View ref={(r)=>{ref&&ref(r)}} style={{ height: (isKeyboardVisible || alwaysVisible ? accessoryHeight : 0) }}>
         <View style={[
           styles.accessory,
           !hideBorder && styles.accessoryBorder,
@@ -189,6 +194,10 @@ KeyboardAccessoryView.propTypes = {
   alwaysVisible: PropTypes.bool,
   hideBorder: PropTypes.bool,
   inSafeAreaView: PropTypes.bool,
+  ref: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func
+  ]),
 }
 
 KeyboardAccessoryView.defaultProps = {
