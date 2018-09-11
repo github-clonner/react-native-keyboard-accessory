@@ -139,6 +139,7 @@ class KeyboardAccessoryView extends Component {
 
     const {
       bumperHeight,
+      adjustableHeight,
       alwaysVisible,
       visibleOpacity,
       hiddenOpacity,
@@ -156,8 +157,8 @@ class KeyboardAccessoryView extends Component {
           style,
           {
             opacity: (isKeyboardVisible || alwaysVisible ? visibleOpacity : hiddenOpacity),
-            bottom: keyboardHeight - bumperHeight - (inSafeAreaView ? 20 : 0),
-            height: accessoryHeight + bumperHeight + (inSafeAreaView ? (!isKeyboardVisible ? 20 : -10) : 0),
+            bottom: keyboardHeight - bumperHeight - (inSafeAreaView ? 20 : 0) + adjustableHeight,
+            height: accessoryHeight + bumperHeight + (inSafeAreaView ? (!isKeyboardVisible ? 20 : -10) : 0) + adjustableHeight,
           }
         ]}>
           <View onLayout={this.handleChildrenLayout}>
@@ -177,6 +178,7 @@ KeyboardAccessoryView.propTypes = {
     PropTypes.func
   ]),
   bumperHeight: PropTypes.number,
+  adjustableHeight: PropTypes.number,
   visibleOpacity: PropTypes.number,
   hiddenOpacity: PropTypes.number,
   onKeyboardShowDelay: PropTypes.oneOfType([
@@ -192,6 +194,7 @@ KeyboardAccessoryView.propTypes = {
 KeyboardAccessoryView.defaultProps = {
   animateOn: 'ios',
   bumperHeight: 15,
+  adjustableHeight: 0,
   visibleOpacity: 1,
   hiddenOpacity: 0,
   androidAdjustResize: false,
