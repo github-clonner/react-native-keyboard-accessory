@@ -42,7 +42,6 @@ class KeyboardAccessoryNavigation extends Component {
       infoMessageStyle,
       nextButtonDirection,
       previousButtonDirection,
-      ref,
       ...passThroughProps
     } = this.props;
 
@@ -142,7 +141,6 @@ KeyboardAccessoryNavigation.propTypes = {
   infoMessageStyle: Text.propTypes.style,
   nextButtonDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
   previousButtonDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
-  ref:PropTypes.object,
 }
 
 KeyboardAccessoryNavigation.defaultProps = {
