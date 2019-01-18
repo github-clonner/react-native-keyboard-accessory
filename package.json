@@ -1,10 +1,10 @@
 {
-  "name": "react-native-keyboard-accessory",
+  "name": "@nerdwallet/react-native-keyboard-accessory",
   "version": "0.1.9",
   "description": "A React Native Keyboard Accessory (View, Navigation) Component. Sticky views on keyboard.",
   "author": {
-    "name": "Arda Oğulcan Pektaş",
-    "email": "ardaogulcan@gmail.com"
+    "name": "Reuben Abraham",
+    "email": "rabraham@nerdwallet.com"
   },
   "scripts": {
     "start": "npm run build && node scripts/setup-example && cd example && npm install && npm start",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ardaogulcan/react-native-keyboard-accessory.git"
+    "url": "git+https://github.com/NerdWallet/react-native-keyboard-accessory.git"
   },
   "bugs": {
-    "url": "https://github.com/ardaogulcan/react-native-keyboard-accessory/issues"
+    "url": "https://github.com/NerdWallet/react-native-keyboard-accessory/issues"
   },
-  "homepage": "https://github.com/ardaogulcan/react-native-keyboard-accessory",
+  "homepage": "https://github.com/NerdWallet/react-native-keyboard-accessory",
   "keywords": [
     "react",
     "react-native",
@@ -34,7 +34,7 @@
     "ios",
     "android"
   ],
-  "license": "MIT",
+  "license": "UNLICENSED",
   "main": "index.js",
   "peerDependencies": {
     "prop-types": ">= 15",
