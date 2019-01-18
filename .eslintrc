@@ -1,0 +1,55 @@
+{
+  "extends": "@nerdwallet/eslint-config",
+  "plugins": ["react-native", "jest"],
+  "globals": {
+    "__DEV__": true,
+    "window": true,
+    "console": true,
+    "fetch": true
+  },
+  "env": {
+    "mocha": false,
+    "browser": false,
+    "jest": true
+  },
+  "rules": {
+    "react/jsx-no-bind": "warn",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "(state|dispatch)" }],
+    "new-cap": ["error", { "capIsNewExceptions": ["Immutable"] }],
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-filename-extension": "off",
+    "global-require": "off",
+    "react/forbid-prop-types": ["error", { "forbid": ["any", "object"] }],
+    "class-methods-use-this": "off",
+    "react/no-unused-prop-types": ["warn", { "skipShapeProps": true }],
+    "react/prefer-stateless-function": [
+      "error",
+      { "ignorePureComponents": true }
+    ],
+    "jest/no-disabled-tests": "error",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/valid-expect": "error",
+    "import/extensions": { "ts": "never" },
+    "no-console": "off",
+    "react/require-default-props": "off",
+    "prefer-promise-reject-errors": "warn",
+    "prefer-destructuring": "warn",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/no-array-index-key": "off",
+    "react/sort-comp": "warn",
+    "sort-imports": [
+      "error",
+      { "ignoreDeclarationSort": true }
+    ],
+    "camelcase": "warn"
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "extensions": [".js", ".ts", ".tsx"]
+      }
+    }
+  }
+}

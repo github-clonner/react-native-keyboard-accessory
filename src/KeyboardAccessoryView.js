@@ -2,14 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  View,
+  Dimensions,
   Keyboard,
   LayoutAnimation,
   Platform,
   StyleSheet,
+  View,
   ViewPropTypes,
-  Dimensions,
 } from 'react-native';
+
+const styles = StyleSheet.create({
+  accessory: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    backgroundColor: '#EFF0F1',
+  },
+  accessoryBorder: {
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(0,0,0,0.2)',
+  },
+});
 
 const accessoryAnimation = (duration, easing, animationConfig = null) => {
   if (animationConfig) {
@@ -113,7 +126,7 @@ class KeyboardAccessoryView extends Component {
 
       this.setState({
         isKeyboardVisible: true,
-        keyboardHeight: keyboardHeight,
+        keyboardHeight,
       });
     };
 
@@ -130,7 +143,7 @@ class KeyboardAccessoryView extends Component {
 
     this.setState({
       isKeyboardVisible: true,
-      keyboardHeight: keyboardHeight,
+      keyboardHeight,
       accessoryHeight: this.state.visibleAccessoryHeight,
     });
   };
@@ -169,13 +182,13 @@ class KeyboardAccessoryView extends Component {
       hideBorder,
       style,
       inSafeAreaView,
-      safeAreaBumper,
       avoidKeyboard,
     } = this.props;
 
     const visibleHeight =
       accessoryHeight + (avoidKeyboard ? keyboardHeight : 0);
     const applySafeArea = isSafeAreaSupported && inSafeAreaView;
+    const safeAreaHeight = isKeyboardVisible ? -10 : 20;
 
     return (
       <View
@@ -197,7 +210,7 @@ class KeyboardAccessoryView extends Component {
               height:
                 accessoryHeight +
                 bumperHeight +
-                (applySafeArea ? (!isKeyboardVisible ? 20 : -10) : 0),
+                (applySafeArea ? safeAreaHeight : 0),
             },
           ]}
         >
@@ -211,6 +224,7 @@ class KeyboardAccessoryView extends Component {
 }
 
 KeyboardAccessoryView.propTypes = {
+  children: PropTypes.node,
   style: (View.propTypes || ViewPropTypes).style,
   animateOn: PropTypes.oneOf(['ios', 'android', 'all', 'none']),
   animationConfig: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
@@ -223,6 +237,7 @@ KeyboardAccessoryView.propTypes = {
   hideBorder: PropTypes.bool,
   inSafeAreaView: PropTypes.bool,
   avoidKeyboard: PropTypes.bool,
+  tabBarVisibleHeight: PropTypes.number,
 };
 
 KeyboardAccessoryView.defaultProps = {
@@ -235,19 +250,7 @@ KeyboardAccessoryView.defaultProps = {
   hideBorder: false,
   inSafeAreaView: false,
   avoidKeyboard: false,
+  tabBarVisibleHeight: 0,
 };
-
-const styles = StyleSheet.create({
-  accessory: {
-    position: 'absolute',
-    right: 0,
-    left: 0,
-    backgroundColor: '#EFF0F1',
-  },
-  accessoryBorder: {
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(0,0,0,0.2)',
-  },
-});
 
 export default KeyboardAccessoryView;
