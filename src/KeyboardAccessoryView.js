@@ -183,12 +183,20 @@ class KeyboardAccessoryView extends Component {
       style,
       inSafeAreaView,
       avoidKeyboard,
+      tabBarVisibleHeight,
     } = this.props;
 
     const visibleHeight =
       accessoryHeight + (avoidKeyboard ? keyboardHeight : 0);
     const applySafeArea = isSafeAreaSupported && inSafeAreaView;
+    const bottom =
+      keyboardHeight -
+      bumperHeight -
+      tabBarVisibleHeight -
+      (applySafeArea ? 20 : 0);
     const safeAreaHeight = isKeyboardVisible ? -10 : 20;
+    const innerViewHeight =
+      accessoryHeight + bumperHeight + (applySafeArea ? safeAreaHeight : 0);
 
     return (
       <View
@@ -206,11 +214,8 @@ class KeyboardAccessoryView extends Component {
                 isKeyboardVisible || alwaysVisible
                   ? visibleOpacity
                   : hiddenOpacity,
-              bottom: keyboardHeight - bumperHeight - (applySafeArea ? 20 : 0),
-              height:
-                accessoryHeight +
-                bumperHeight +
-                (applySafeArea ? safeAreaHeight : 0),
+              bottom,
+              height: innerViewHeight,
             },
           ]}
         >
