@@ -1,23 +1,30 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Keyboard, Platform } from 'react-native'
+import { Keyboard, Platform } from 'react-native';
 
 export default class KeyboardAwareTabBarComponent extends React.PureComponent {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      isVisible: true
-    }
+      isVisible: true,
+    };
   }
 
   componentWillMount() {
-    const keyboardShowEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
-    const keyboardHideEvent = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
+    const keyboardShowEvent =
+      Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+    const keyboardHideEvent =
+      Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
 
-    this.keyboardWillShowSub = Keyboard.addListener(keyboardShowEvent, this.keyboardWillShow);
-    this.keyboardWillHideSub = Keyboard.addListener(keyboardHideEvent, this.keyboardWillHide);
+    this.keyboardWillShowSub = Keyboard.addListener(
+      keyboardShowEvent,
+      this.keyboardWillShow
+    );
+    this.keyboardWillHideSub = Keyboard.addListener(
+      keyboardHideEvent,
+      this.keyboardWillHide
+    );
   }
 
   componentWillUnmount() {
@@ -25,28 +32,27 @@ export default class KeyboardAwareTabBarComponent extends React.PureComponent {
     this.keyboardWillHideSub.remove();
   }
 
-  keyboardWillShow = (event) => {
+  keyboardWillShow = event => {
     this.setState({
-      isVisible: false
-    })
-  }
+      isVisible: false,
+    });
+  };
 
-  keyboardWillHide = (event) => {
+  keyboardWillHide = event => {
     this.setState({
-      isVisible: true
-    })
-  }
+      isVisible: true,
+    });
+  };
 
   render() {
     const { TabBarComponent, ...componentProps } = this.props;
     const { isVisible } = this.state;
 
-    return isVisible
-      ? <TabBarComponent {...componentProps} />
-      : null
+    return isVisible ? <TabBarComponent {...componentProps} /> : null;
   }
 }
 
 KeyboardAwareTabBarComponent.propTypes = {
-  TabBarComponent: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]).isRequired,
+  TabBarComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func])
+    .isRequired,
 };

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  TouchableOpacity,
-} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import Arrow from '../Arrow';
 
@@ -23,16 +21,20 @@ const AccessoryArrowButton = ({
     <TouchableOpacity
       disabled={disabled}
       onPress={onPress}
-      {...passThroughProps}>
-      { customButton ? customButton : (
+      {...passThroughProps}
+    >
+      {customButton ? (
+        customButton
+      ) : (
         <Arrow
           direction={direction}
           disabled={disabled}
-          tintColor={tintColor} />
+          tintColor={tintColor}
+        />
       )}
     </TouchableOpacity>
   );
-}
+};
 
 AccessoryArrowButton.propTypes = {
   customButton: PropTypes.element,
@@ -41,6 +43,6 @@ AccessoryArrowButton.propTypes = {
   disabled: PropTypes.bool.isRequired,
   hidden: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
-}
+};
 
 export default AccessoryArrowButton;

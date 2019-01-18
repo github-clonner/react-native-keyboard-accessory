@@ -60,7 +60,7 @@ class ViewExample extends Component {
       previousFocusDisabled: index === 0,
       activeInputIndex: index,
     });
-  }
+  };
 
   handleFocusNext = () => {
     const { nextFocusDisabled, activeInputIndex } = this.state;
@@ -69,7 +69,7 @@ class ViewExample extends Component {
     }
 
     inputs[activeInputIndex + 1].ref.current.focus();
-  }
+  };
 
   handleFocusPrevious = () => {
     const { previousFocusDisabled, activeInputIndex } = this.state;
@@ -78,7 +78,7 @@ class ViewExample extends Component {
     }
 
     inputs[activeInputIndex - 1].ref.current.focus();
-  }
+  };
 
   render() {
     return (
@@ -89,15 +89,13 @@ class ViewExample extends Component {
               value={this.state.buttonsHidden}
               onValueChange={() => {
                 this.setState({
-                  buttonsHidden: !this.state.buttonsHidden
-                })
+                  buttonsHidden: !this.state.buttonsHidden,
+                });
               }}
             />
-            <Text style={styles.switchInputText}>
-              Hide arrows
-            </Text>
+            <Text style={styles.switchInputText}>Hide arrows</Text>
           </View>
-          { inputs.map(({ placeholder, keyboardType, ref }, index) =>
+          {inputs.map(({ placeholder, keyboardType, ref }, index) => (
             <TextInput
               key={`input_${index}`}
               ref={ref}
@@ -108,7 +106,7 @@ class ViewExample extends Component {
               blurOnSubmit={false}
               onFocus={this.handleFocus(index)}
             />
-          )}
+          ))}
         </ScrollView>
         <KeyboardAccessoryNavigation
           avoidKeyboard={true}
@@ -125,11 +123,11 @@ class ViewExample extends Component {
 }
 ViewExample.navigationOptions = {
   title: 'Navigation View Example',
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   contentContainer: {
     padding: 30,

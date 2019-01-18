@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  Button,
-  ScrollView,
-} from 'react-native';
+import { StyleSheet, View, TextInput, Button, ScrollView } from 'react-native';
 
 import { KeyboardAccessoryView } from '../react-native-keyboard-accessory';
 
@@ -15,20 +9,25 @@ class ViewExample extends Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <Button title="Go to Navigation Example" onPress={() => {
-            this.props.navigation.navigate('NavigationView')
-          }} />
+          <Button
+            title="Go to Navigation Example"
+            onPress={() => {
+              this.props.navigation.navigate('NavigationView');
+            }}
+          />
         </ScrollView>
         <KeyboardAccessoryView alwaysVisible={true}>
           <View style={styles.textInputView}>
             <TextInput
               underlineColorAndroid="transparent"
               style={styles.textInput}
-              multiline={true} />
+              multiline={true}
+            />
             <Button
               style={styles.textInputButton}
               title="Send"
-              onPress={() => {}}/>
+              onPress={() => {}}
+            />
           </View>
         </KeyboardAccessoryView>
       </View>
@@ -38,11 +37,11 @@ class ViewExample extends Component {
 
 ViewExample.navigationOptions = {
   title: 'View Example',
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   textInputView: {
     padding: 8,
@@ -58,11 +57,11 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 16,
     marginRight: 10,
-    textAlignVertical: 'top'
+    textAlignVertical: 'top',
   },
   textInputButton: {
     flexShrink: 1,
-  }
+  },
 });
 
 export default ViewExample;

@@ -17,7 +17,7 @@ class KeyboardAccessoryNavigation extends Component {
   handleDoneButton = () => {
     this.props.onDone && this.props.onDone();
     Keyboard.dismiss();
-  }
+  };
 
   render() {
     const {
@@ -58,9 +58,9 @@ class KeyboardAccessoryNavigation extends Component {
     ];
 
     return (
-      <KeyboardAccessoryView { ...passThroughProps }>
+      <KeyboardAccessoryView {...passThroughProps}>
         <View style={accessoryContainerStyle}>
-          { !arrowsHidden && (
+          {!arrowsHidden && (
             <View style={styles.leftContainer}>
               <AccessoryArrowButton
                 style={[styles.previousButton, previousButtonStyle]}
@@ -82,12 +82,17 @@ class KeyboardAccessoryNavigation extends Component {
               />
             </View>
           )}
-          { (infoMessage || infoContainer) && (
+          {(infoMessage || infoContainer) && (
             <View style={styles.infoContainer}>
               {infoContainer || (
-                <Text style={[infoMessageStyle, {
-                  color: tintColor,
-                }]}>
+                <Text
+                  style={[
+                    infoMessageStyle,
+                    {
+                      color: tintColor,
+                    },
+                  ]}
+                >
                   {infoMessage}
                 </Text>
               )}
@@ -95,18 +100,21 @@ class KeyboardAccessoryNavigation extends Component {
           )}
           <TouchableOpacity
             style={[styles.doneButton, doneButtonStyle]}
-            onPress={this.handleDoneButton}>
-            { doneButton ||
-              <Text style={[
-                styles.doneButtonText,
-                doneButtonTitleStyle,
-                {
-                  color: tintColor,
-                }
-              ]}>
+            onPress={this.handleDoneButton}
+          >
+            {doneButton || (
+              <Text
+                style={[
+                  styles.doneButtonText,
+                  doneButtonTitleStyle,
+                  {
+                    color: tintColor,
+                  },
+                ]}
+              >
                 {doneButtonTitle}
               </Text>
-            }
+            )}
           </TouchableOpacity>
         </View>
       </KeyboardAccessoryView>
@@ -131,15 +139,15 @@ KeyboardAccessoryNavigation.propTypes = {
   nextHidden: PropTypes.bool,
   previousHidden: PropTypes.bool,
   tintColor: PropTypes.string,
-  accessoryStyle: (View.propTypes||ViewPropTypes).style,
-  previousButtonStyle: (View.propTypes||ViewPropTypes).style,
-  nextButtonStyle: (View.propTypes||ViewPropTypes).style,
-  doneButtonStyle: (View.propTypes||ViewPropTypes).style,
+  accessoryStyle: (View.propTypes || ViewPropTypes).style,
+  previousButtonStyle: (View.propTypes || ViewPropTypes).style,
+  nextButtonStyle: (View.propTypes || ViewPropTypes).style,
+  doneButtonStyle: (View.propTypes || ViewPropTypes).style,
   doneButtonTitleStyle: Text.propTypes.style,
   infoMessageStyle: Text.propTypes.style,
   nextButtonDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
   previousButtonDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
-}
+};
 
 KeyboardAccessoryNavigation.defaultProps = {
   doneButtonTitle: 'Done',
@@ -150,7 +158,7 @@ KeyboardAccessoryNavigation.defaultProps = {
   previousHidden: false,
   nextButtonDirection: 'down',
   previousButtonDirection: 'up',
-}
+};
 
 const styles = StyleSheet.create({
   accessoryContainer: {
@@ -172,8 +180,8 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   doneButtonText: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
-})
+});
 
 export default KeyboardAccessoryNavigation;

@@ -5,5 +5,5 @@ import KeyboardAwareTabBarComponent from './KeyboardAwareTabBarComponent';
 export {
   KeyboardAccessoryView,
   KeyboardAccessoryNavigation,
-  KeyboardAwareTabBarComponent
-}
+  KeyboardAwareTabBarComponent,
+};
